@@ -1,0 +1,36 @@
+{
+  "name": "rtn-react-native-simple-toast",
+  "version": "0.0.1",
+  "description": "Simple Toast for react-native. In Android it's just native toast, in iOS it's https://github.com/scalessec/Toast",
+  "react-native": "src/index",
+  "source": "src/index",
+  "files": [
+    "src",
+    "android",
+    "ios",
+    "rtn-react-native-simple-toast.podspec",
+    "!android/build",
+    "!ios/build",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
+  "keywords": ["react-native", "ios", "android", "toast"],
+  "repository": "https://github.com/<your_github_handle>/rtn-calculator",
+  "author": "<Your Name> <your_email@your_provider.com> (https://github.com/<your_github_handle>)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/<your_github_handle>/rtn-calculator/issues"
+  },
+  "homepage": "https://github.com/<your_github_handle>/rtn-calculator#readme",
+  "devDependencies": {},
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "codegenConfig": {
+    "name": "RTNSimpleToastSpec",
+    "type": "modules",
+    "jsSrcsDir": "src"
+  }
+}
