@@ -39,6 +39,8 @@ double const RTNSimpleToastLongDuration = 5.0;
 - (void)keyboardWillHide:(NSNotification *)notification {
     _kbdHeight = 0;
 }
+
+
 RCT_EXPORT_MODULE()
 
 - (NSDictionary *)constantsToExport {
@@ -55,47 +57,23 @@ RCT_EXPORT_MODULE()
     return NO;
 }
 
-
 RCT_EXPORT_METHOD(show:(NSString *)msg
                   duration:(double)duration
                   viewControllerBlacklist:(nullable NSArray<NSString*>*) viewControllerBlacklist {
-  // [self _show:msg duration:duration gravity:CSToastPositionBottom viewControllerBlacklist:viewControllerBlacklist];
-    [self _show:msg duration:duration viewControllerBlacklist:viewControllerBlacklist];
+  [self _show:msg duration:duration gravity:(NSString *)CSToastPositionBottom viewControllerBlacklist:viewControllerBlacklist];
+
 });
 
 RCT_EXPORT_METHOD(showWithGravity:(NSString *)msg
                   duration:(double)duration
                   gravity:(nonnull NSString *)gravity
                   viewControllerBlacklist: (nullable NSArray<NSString*>*) viewControllerBlacklist {
-  // [self _show:msg duration:duration gravity:gravity viewControllerBlacklist:viewControllerBlacklist];
-    [self _show:msg duration:duration viewControllerBlacklist:viewControllerBlacklist];
+  [self _show:msg duration:duration gravity:gravity viewControllerBlacklist:viewControllerBlacklist];
 });
-
-// RCT_REMAP_METHOD(show, (NSString *)msg
-//                   duration:(NSNumber *)duration
-//                   viewControllerBlacklist:(nullable NSArray<NSString*>*)viewControllerBlacklist
-//                   // duration:(double)duration
-//                   // viewControllerBlacklist:(nullable NSArray<NSString*>*) viewControllerBlacklist 
-//                   withResolver:(RCTPromiseResolveBlock) resolve
-//                   withRejecter:(RCTPromiseRejectBlock) reject){
-//   // [self _show:msg duration:duration gravity:CSToastPositionBottom viewControllerBlacklist:viewControllerBlacklist];
-// };
-
-// RCT_REMAP_METHOD(showWithGravity, (NSString *)msg
-//                   duration:(NSNumber *)duration
-//                   gravity:(nonnull NSString *)gravity
-//                   viewControllerBlacklist:(nullable NSArray<NSString*>*)viewControllerBlacklist
-//                   // duration:(double)duration
-//                   // gravity:(nonnull NSString *)gravity
-//                   // viewControllerBlacklist: (nullable NSArray<NSString*>*) viewControllerBlacklist
-//                   withResolver:(RCTPromiseResolveBlock) resolve
-//                   withRejecter:(RCTPromiseRejectBlock) reject) {
-//   // [self _show:msg duration:duration gravity:gravity viewControllerBlacklist:viewControllerBlacklist];
-// };
 
 - (void)_show:(NSString *)msg
      duration:(NSTimeInterval)duration
-      // gravity:(nonnull NSString *)gravity
+      gravity:(nonnull NSString *)gravity
 viewControllerBlacklist:(nullable NSArray<NSString*>*) viewControllerBlacklist {
     dispatch_async(dispatch_get_main_queue(), ^{
       UIViewController* presentedViewController = [self getViewControllerBlacklisted: viewControllerBlacklist];
@@ -103,8 +81,7 @@ viewControllerBlacklist:(nullable NSArray<NSString*>*) viewControllerBlacklist {
         UIView __weak *blockView = view;
         [view makeToast:msg
                duration:duration
-              //  position:gravity // CSToastPositionBottom
-                  position:CSToastPositionBottom
+               position:gravity
                   title:nil
                   image:nil
                   style:nil
@@ -156,6 +133,7 @@ viewControllerBlacklist:(nullable NSArray<NSString*>*) viewControllerBlacklist {
     [root addSubview:view];
     return view;
 }
+
 
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params
