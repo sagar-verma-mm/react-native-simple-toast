@@ -1,7 +1,10 @@
 import {Platform } from 'react-native';
 
+
+const isTurboModuleEnabled = global.__turboModuleProxy != null;
+
 const RCTToast = Platform.select({
-  ios: require("./NativeSimpleToast").default,
+  ios: isTurboModuleEnabled ? require("./NativeSimpleToast").default : require('./SimpleToast').default,
   android: require('react-native').ToastAndroid,
 });
 

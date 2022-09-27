@@ -1,4 +1,7 @@
-#import "RTNSimpleToastSpec.h"
+#ifdef RCT_NEW_ARCH_ENABLED
+#import "RTNSimpleToastSpec.h"   //----
+#endif
+
 #import "RTNSimpleToast.h"
 #import <UIKit/UIKit.h>
 #import <React/RCTBridgeModule.h>
@@ -134,11 +137,12 @@ viewControllerBlacklist:(nullable NSArray<NSString*>*) viewControllerBlacklist {
     return view;
 }
 
-
-- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
+#ifdef RCT_NEW_ARCH_ENABLED
+- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule: //----
     (const facebook::react::ObjCTurboModule::InitParams &)params
 {
     return std::make_shared<facebook::react::NativeSimpleToastSpecJSI>(params);
 }
+#endif
 
 @end
