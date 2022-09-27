@@ -16,13 +16,13 @@
     "!**/__mocks__"
   ],
   "keywords": ["react-native", "ios", "android", "toast"],
-  "repository": "https://github.com/<your_github_handle>/rtn-calculator",
-  "author": "<Your Name> <your_email@your_provider.com> (https://github.com/<your_github_handle>)",
+  "repository": "git+https://github.com/vonovak/react-native-simple-toast.git",
+  "author": "Vojtech Novak (https://github.com/vonovak/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/<your_github_handle>/rtn-calculator/issues"
+    "url": "git+https://github.com/vonovak/react-native-simple-toast.git/issues"
   },
-  "homepage": "https://github.com/<your_github_handle>/rtn-calculator#readme",
+  "homepage": "https://github.com/vonovak/react-native-simple-toast.git#readme",
   "devDependencies": {},
   "peerDependencies": {
     "react": "*",
